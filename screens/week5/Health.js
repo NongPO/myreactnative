@@ -7,6 +7,7 @@ export default function Health() {
     return (
         <View style={{ flex: 1 , backgroundColor : 'lightblue', justifyContent : "center", padding : 20 }}>
             <Bmi/>
+            <Heartbeat/>
             
         </View>
     );
