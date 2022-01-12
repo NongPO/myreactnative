@@ -18,11 +18,21 @@ import Travel from './screens/week3/Travel';
 import Health from './screens/week5/Health';
 import Resort from './screens/week4/Resort';
 import Home from './screens/week6/home';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeStack from './components/navigations/HomeStack';
+import BottomTab from './components/navigations/BottomTab';
+import RootStack from './components/navigations/RootStack';
+
 
 
 export default function App() {
   return (
-    <Home/>
+    <NavigationContainer>
+      { <HomeStack/>}
+           {/*  <BottomTab/> */}
+           
+            {/* <RootStack/> */}
+        </NavigationContainer>
   );
 }
 
