@@ -28,10 +28,11 @@ import RootStack from './components/navigations/RootStack';
 export default function App() {
   return (
     <NavigationContainer>
-      { <HomeStack/>}
+     {/*  { <HomeStack/>} */}
            {/*  <BottomTab/> */}
            
-            {/* <RootStack/> */}
+            <RootStack/>
+         {/*    <Resort/> */}
         </NavigationContainer>
   );
 }
