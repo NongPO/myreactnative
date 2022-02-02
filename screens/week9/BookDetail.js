@@ -1,11 +1,14 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect,useState } from "react";
 import { Alert,View,Text,Image,TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import BookStorage from "../../storages/BookStorage";
+import BookLaravel from "../../services/BookLaravel";
 
 export default function BookDetail() {  
     const route = useRoute();
   const { item } = route.params;
+  const [book, setBook ] = useState(item);
 
   //Alert Delete
   const confirmDelete = () => {
@@ -14,10 +17,25 @@ export default function BookDetail() {
         "คุณแน่ใจหรือไม่ว่าจะลบรายการนี้?",
         [
           { text: "ยกเลิก", },
-          { text: "ยืนยัน", onPress: () => { }, },
+          { text: "ยืนยัน", onPress: () => { deleteBook(); }, },
         ]
       );
     };
+
+    const deleteBook = async () => {
+      //REMOVE BOOK
+      //await BookStorage.removeItem(item);
+      await BookLaravel.destroyItem(item);
+      //REDIRECT TO
+      navigation.navigate("Book");
+    };
+  
+    useEffect(async()=>{
+      //let b = await BookStorage.readItemDetail(item);
+      let b = await BookLaravel.getItemDetail(item);
+      setBook(b);
+    },[]);
+  
   
 
   //Config Header Bar
