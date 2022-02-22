@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import BookStorage from "../../storages/BookStorage";
 import Book from "./Book";
 import BookLaravel from "../../services/BookLaravel";
+import UploadArea from "../../components/week12/UploadArea";
 
 export default function BookForm() {  
     const saveBook = async () => {
@@ -52,6 +53,9 @@ export default function BookForm() {
         <TextInput placeholder="Enter price ..." value={price} onChangeText={(text) => setPrice(text)} />
         <Text>ลิงค์รูปภาพ</Text>
         <TextInput placeholder="Enter image URL ..." value={image} onChangeText={(text) => setImage(text)} />
+
+        <UploadArea image={image} setImage={setImage} />
+
       </ScrollView>      
       <Button title="SAVE" color="tomato" onPress={saveBook} />
       
